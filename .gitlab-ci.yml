@@ -1,0 +1,13 @@
+stages:
+  - scan_sast
+
+sonarcloud_scan:
+  stage: scan_sast
+  image: sonarsource/sonar-scanner-cli:latest
+  script:
+    - sonar-scanner \
+        -Dsonar.organization=lowerparchment \
+        -Dsonar.projectKey=pygoat-truist \
+        -Dsonar.sources=app \
+        -Dsonar.host.url=https://sonarcloud.io \
+        -Dsonar.login=$SONAR_TOKEN
